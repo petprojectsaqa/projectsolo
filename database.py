@@ -16,9 +16,17 @@ try:
     )
 
     with db:
-        with db.cursor() as cursor:
+        with db.cursor(dictionary=True) as cursor:
             cursor.execute("SELECT * FROM students")
-            print(cursor.fetchall())
+            data = cursor.fetchall()
+            for student in data:
+                print(student['second_name'])
+
+            cursor.execute("SELECT * FROM students WHERE id = 2")
+            data2 = cursor.fetchone()
+            print(data2)
+
+
 
 except (mysql.Error, TypeError, ValueError) as e:
     print(f'Error: {e}')
