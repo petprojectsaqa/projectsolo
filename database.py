@@ -17,11 +17,7 @@ try:
 
     with db:
         with db.cursor() as cursor:
-            cursor.execute(
-                '''
-                SELECT * FROM students
-                '''
-            )
+            cursor.execute("SELECT * FROM students")
             print(cursor.fetchall())
 
 except (mysql.Error, TypeError, ValueError) as e:
