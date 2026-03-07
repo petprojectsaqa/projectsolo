@@ -7,11 +7,11 @@ load_dotenv()
 
 try:
     db = mysql.connect(
-        user=os.getenv("USER"),
-        passwd=os.getenv("PASSWD"),
-        host=os.getenv("HOST"),
-        port=int(os.getenv("PORT")),
-        database=os.getenv("DATABASE")
+        user=os.getenv("MYSQL_USER"),
+        passwd=os.getenv("MYSQL_PASSWD"),
+        host=os.getenv("MYSQL_HOST"),
+        port=int(os.getenv("MYSQL_PORT")),
+        database=os.getenv("MYSQL_DATABASE")
     )
 
     with db:
@@ -21,7 +21,7 @@ try:
             data_dict = cursor.fetchone()
             print(data_dict['rfam_acc'])
 
-            # плохо, что реюзаем код
+            # плохо, что перепечатали код
             cursor.execute("SELECT * FROM family WHERE rfam_acc = 'RF00001'")
             # fetchall оборачивает dict'ы в list
             data_list = cursor.fetchall()
