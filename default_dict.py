@@ -1,0 +1,2 @@
+def zaglushka():
+    pass

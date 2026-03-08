@@ -22,7 +22,6 @@ try:
             data_dict = cursor.fetchone()
             print(data_dict['rfam_acc'])
 
-            # плохо, что перепечатали код
             cursor.execute("SELECT * FROM family LIMIT 10")
             # fetchall оборачивает dict'ы в list
             data_list = cursor.fetchall()
