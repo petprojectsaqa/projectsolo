@@ -1,6 +1,7 @@
 import mysql.connector as mysql
 import os
 from dotenv import load_dotenv
+import json
 
 
 load_dotenv()
@@ -22,11 +23,13 @@ try:
             print(data_dict['rfam_acc'])
 
             # плохо, что перепечатали код
-            cursor.execute("SELECT * FROM family WHERE rfam_acc = 'RF00001'")
+            cursor.execute("SELECT * FROM family LIMIT 10")
             # fetchall оборачивает dict'ы в list
             data_list = cursor.fetchall()
-            print(data_list[0]['rfam_acc'])
-
+            print(data_list[0])
+            print(json.dumps(data_list, indent=4, default=str))
+            for line in data_list:
+                print(line['rfam_id'])
 
 
 except (mysql.Error, TypeError, ValueError) as e:
