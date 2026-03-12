@@ -1,0 +1,5 @@
+Alex:smoke
+Nikita:regress
+Anton:sanity
+Artem:e2e
+Alex:e2e
